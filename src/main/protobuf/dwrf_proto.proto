@@ -153,4 +153,5 @@ message PostScript {
     optional uint64 footerLength = 1;
     optional CompressionKind compression = 2;
     optional uint64 compressionBlockSize = 3;
+    optional uint32 writerVersion = 4;
 }
