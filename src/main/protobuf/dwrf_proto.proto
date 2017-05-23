@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 
+syntax = "proto2";
+
 package com.facebook.hive.orc;
 
 option java_package = "com.facebook.presto.orc.proto";
