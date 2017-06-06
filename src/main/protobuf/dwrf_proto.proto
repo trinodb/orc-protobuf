@@ -37,6 +37,8 @@ message DoubleStatistics {
 message StringStatistics {
     optional string minimum = 1;
     optional string maximum = 2;
+    // total length of all strings
+    optional sint64 sum = 3;
 }
 
 message BucketStatistics {
@@ -49,6 +51,7 @@ message ColumnStatistics {
     optional DoubleStatistics doubleStatistics = 3;
     optional StringStatistics stringStatistics = 4;
     optional BucketStatistics bucketStatistics = 5;
+    optional bool hasNull = 6;
 }
 
 message RowIndexEntry {
@@ -58,6 +61,16 @@ message RowIndexEntry {
 
 message RowIndex {
     repeated RowIndexEntry entry = 1;
+}
+
+message BloomFilter {
+    optional uint32 numHashFunctions = 1;
+    repeated fixed64 bitset = 2;
+    optional bytes utf8bitset = 3;
+}
+
+message BloomFilterIndex {
+    repeated BloomFilter bloomFilter = 1;
 }
 
 message Stream {
@@ -74,6 +87,7 @@ message Stream {
         IN_DICTIONARY = 7;
         STRIDE_DICTIONARY = 8;
         STRIDE_DICTIONARY_LENGTH = 9;
+        BLOOM_FILTER_UTF8 = 10;
     }
     required Kind kind = 1;
     optional uint32 column = 2;
@@ -85,6 +99,8 @@ message ColumnEncoding {
     enum Kind {
         DIRECT = 0;
         DICTIONARY = 1;
+        DIRECT_V2 = 2;
+        DICTIONARY_V2 = 3;
     }
     required Kind kind = 1;
     optional uint32 dictionarySize = 2;
@@ -141,6 +157,7 @@ message Footer {
     repeated ColumnStatistics statistics = 7;
     optional uint32 rowIndexStride = 8;
     optional uint64 rawDataSize = 9;
+    repeated uint32 stripeCacheOffsets = 10 [packed = true];
 }
 
 enum CompressionKind {
@@ -149,6 +166,14 @@ enum CompressionKind {
     SNAPPY = 2;
     LZO = 3;
     ZSTD = 4;
+    LZ4 = 5;
+}
+
+enum StripeCacheMode {
+    NA = 0;
+    INDEX = 1;
+    FOOTER = 2;
+    BOTH = 3;
 }
 
 // Serialized length must be less that 255 bytes
@@ -157,4 +182,38 @@ message PostScript {
     optional CompressionKind compression = 2;
     optional uint64 compressionBlockSize = 3;
     optional uint32 writerVersion = 4;
+    optional StripeCacheMode cacheMode = 5;
+    optional uint32 cacheSize = 6;
+}
+
+// define single type conversion schema
+enum PrimitiveType {
+    VOID = 0;
+    BOOLEAN = 1;
+    BYTE = 2;
+    SHORT = 3;
+    INT = 4;
+    LONG = 5;
+    FLOAT = 6;
+    DOUBLE = 7;
+    STRING = 8;
+    DATE = 9;
+    TIMESTAMP = 10;
+    BINARY = 11;
+    DECIMAL = 12;
+    VARCHAR = 13;
+    CHAR = 14;
+    INTERVAL_YEAR_MONTH = 15;
+    INTERVAL_DAY_TIME = 16;
+    UNKNOWN = 17;
+}
+
+message TypeStorage {
+    required uint32 streamId = 1;
+    required PrimitiveType source = 2;
+    required PrimitiveType storage = 3;
+}
+
+message TypeStorageList {
+    repeated TypeStorage types = 1;
 }
