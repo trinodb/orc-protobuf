@@ -45,6 +45,11 @@ message BucketStatistics {
     repeated uint64 count = 1 [packed = true];
 }
 
+message BinaryStatistics {
+    // total binary blob length
+    optional sint64 sum = 1;
+}
+
 message ColumnStatistics {
     optional uint64 numberOfValues = 1;
     optional IntegerStatistics intStatistics = 2;
@@ -52,6 +57,7 @@ message ColumnStatistics {
     optional StringStatistics stringStatistics = 4;
     optional BucketStatistics bucketStatistics = 5;
     optional bool hasNull = 6;
+    optional BinaryStatistics binaryStatistics = 7;
 }
 
 message RowIndexEntry {
