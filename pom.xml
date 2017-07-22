@@ -10,7 +10,7 @@
 
     <groupId>com.facebook.presto.orc</groupId>
     <artifactId>orc-protobuf</artifactId>
-    <version>5-SNAPSHOT</version>
+    <version>5</version>
 
     <name>orc-protobuf</name>
     <description>Compiled ORC protobuf definitions</description>
@@ -33,7 +33,7 @@
     <scm>
         <connection>scm:git:git://github.com/prestodb/orc-protobuf.git</connection>
         <url>https://github.com/prestodb/orc-protobuf</url>
-        <tag>HEAD</tag>
+        <tag>5</tag>
     </scm>
 
     <properties>
