@@ -94,11 +94,20 @@ message Stream {
         STRIDE_DICTIONARY = 8;
         STRIDE_DICTIONARY_LENGTH = 9;
         BLOOM_FILTER_UTF8 = 10;
+        IN_MAP = 11;
     }
     required Kind kind = 1;
     optional uint32 column = 2;
     optional uint64 length = 3;
     optional bool useVInts = 4 [default = true];
+    optional uint32 sequence = 6;
+}
+
+message KeyInfo {
+  // this covers all width of integers including byte, short, int and long
+  optional int64 intKey = 1;
+  // this covers binary key or utf8 string
+  optional bytes bytesKey = 2;
 }
 
 message ColumnEncoding {
@@ -107,9 +116,13 @@ message ColumnEncoding {
         DICTIONARY = 1;
         DIRECT_V2 = 2;
         DICTIONARY_V2 = 3;
+        MAP_FLAT = 4;
     }
     required Kind kind = 1;
     optional uint32 dictionarySize = 2;
+    optional uint32 column = 3;
+    optional uint32 sequence = 4;
+    optional KeyInfo key = 5;
 }
 
 message StripeFooter {
