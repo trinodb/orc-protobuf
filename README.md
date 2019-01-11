@@ -1,4 +1,4 @@
-# ORC protobuf [![Build Status](https://travis-ci.org/prestodb/orc-protobuf.svg?branch=master)](https://travis-ci.org/prestodb/orc-protobuf)
+# ORC protobuf [![Build Status](https://travis-ci.org/prestosql/orc-protobuf.svg?branch=master)](https://travis-ci.org/prestosql/orc-protobuf)
 
 Compiled ORC protobuf definitions:
 

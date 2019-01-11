@@ -8,13 +8,13 @@
         <version>90</version>
     </parent>
 
-    <groupId>com.facebook.presto.orc</groupId>
+    <groupId>io.prestosql.orc</groupId>
     <artifactId>orc-protobuf</artifactId>
     <version>8-SNAPSHOT</version>
 
     <name>orc-protobuf</name>
     <description>Compiled ORC protobuf definitions</description>
-    <url>https://github.com/prestodb/orc-protobuf</url>
+    <url>https://github.com/prestosql/orc-protobuf</url>
 
     <inceptionYear>2016</inceptionYear>
 
@@ -31,8 +31,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/prestodb/orc-protobuf.git</connection>
-        <url>https://github.com/prestodb/orc-protobuf</url>
+        <connection>scm:git:git://github.com/prestosql/orc-protobuf.git</connection>
+        <url>https://github.com/prestosql/orc-protobuf</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -83,7 +83,7 @@
                             <relocations>
                                 <relocation>
                                     <pattern>com.google.protobuf</pattern>
-                                    <shadedPattern>com.facebook.presto.orc.protobuf</shadedPattern>
+                                    <shadedPattern>io.prestosql.orc.protobuf</shadedPattern>
                                 </relocation>
                             </relocations>
                             <filters>

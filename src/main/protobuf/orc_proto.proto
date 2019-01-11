@@ -20,7 +20,7 @@ syntax = "proto2";
 
 package orc.proto;
 
-option java_package = "com.facebook.presto.orc.proto";
+option java_package = "io.prestosql.orc.proto";
 
 message IntegerStatistics  {
   optional sint64 minimum = 1;
