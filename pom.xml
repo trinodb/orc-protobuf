@@ -10,7 +10,7 @@
 
     <groupId>io.prestosql.orc</groupId>
     <artifactId>orc-protobuf</artifactId>
-    <version>10-SNAPSHOT</version>
+    <version>10</version>
 
     <name>orc-protobuf</name>
     <description>Compiled ORC protobuf definitions</description>
@@ -33,7 +33,7 @@
     <scm>
         <connection>scm:git:git://github.com/prestosql/orc-protobuf.git</connection>
         <url>https://github.com/prestosql/orc-protobuf</url>
-        <tag>HEAD</tag>
+        <tag>10</tag>
     </scm>
 
     <properties>
