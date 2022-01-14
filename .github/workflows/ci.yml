@@ -7,11 +7,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version:
+          - 11
+          - 17
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
-          java-version:
-            - 11
-            - 17
+          java-version: ${{ matrix.java-version }}
       - run: mvn -V -B -P ci clean install
