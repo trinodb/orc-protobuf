@@ -10,7 +10,7 @@
 
     <groupId>io.trino.orc</groupId>
     <artifactId>orc-protobuf</artifactId>
-    <version>14-SNAPSHOT</version>
+    <version>14</version>
 
     <name>orc-protobuf</name>
     <description>Compiled ORC protobuf definitions</description>
@@ -33,7 +33,7 @@
     <scm>
         <connection>scm:git:git://github.com/trinodb/orc-protobuf.git</connection>
         <url>https://github.com/trinodb/orc-protobuf</url>
-        <tag>HEAD</tag>
+        <tag>14</tag>
     </scm>
 
     <properties>
